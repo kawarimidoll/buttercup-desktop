@@ -3,6 +3,9 @@ const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
+const path = require('path');
 
 module.exports = merge(baseConfig, {
   devtool: 'cheap-module-eval-source-map',
@@ -42,6 +45,20 @@ module.exports = merge(baseConfig, {
     }),
     new webpack.LoaderOptionsPlugin({
       debug: true
+    }),
+    new WriteFilePlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          flatten: true,
+          from: path.join(
+            path.dirname(require.resolve('@buttercup/ui')),
+            'icons',
+            '*.png'
+          ),
+          to: path.resolve(__dirname, '../app/resources/icons/')
+        }
+      ]
     })
   ],
 

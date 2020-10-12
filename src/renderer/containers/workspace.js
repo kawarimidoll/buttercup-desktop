@@ -1,6 +1,6 @@
 import { ipcRenderer } from 'electron';
 import { connect } from 'react-redux';
-import Workspace from '../components/workspace';
+import Workspace from '../components/workspace-backup';
 import { setColumnSize } from '../../shared/actions/settings';
 import {
   getCurrentArchive,

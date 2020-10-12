@@ -3,7 +3,7 @@ import { ipcRenderer as ipc } from 'electron';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Flex } from 'styled-flexbox';
-import Archive from '../components/archive';
+import Archive from './archive';
 import Sidebar from '../containers/sidebar';
 import GlobalStyles from './global-styles';
 import SavingModal from './saving-modal';
